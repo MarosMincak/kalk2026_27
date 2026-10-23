@@ -13,8 +13,8 @@ namespace kalkulacka
     public partial class displayHistory : Form
     {
         string op = "";
-        double number1 =0;
-        double number2 =0;
+        double number1 = 0;
+        double number2 = 0;
         double result = 0;
         public displayHistory()
         {
@@ -28,16 +28,33 @@ namespace kalkulacka
 
         private void button_Operator_Click(object sender, EventArgs e)
         {
-            number1 = int.Parse(display.Text);
+            /* TODO
             op = ((Button)sender).Text;
+            if (display.Text.Contains("."))
+                {
+                display.Text = display.Text.Replace(op, "");
+                number1 = double.Parse(display.Text.Replace(op, ""));
+                
+                }
+            */
+            try
+            {
 
-            historyDisplay.Text = number1 + op;
-            display.Clear();
+                number1 = double.Parse(display.Text);
+
+                op = ((Button)sender).Text;
+         
+                historyDisplay.Text = number1 + op;
+                display.Clear();
+            }
+            catch(Exception err) { 
+                Console.WriteLine(err.Message);
+            }
         }
 
         private void buttonEqueal_Click(object sender, EventArgs e)
         {
-            number2 = int.Parse(display.Text);
+            number2 = double.Parse(display.Text);
             historyDisplay.Text += number2;
 
             if(op == "+")
@@ -78,13 +95,18 @@ namespace kalkulacka
 
         private void buttonC_Click(object sender, EventArgs e)
         {
-            display.Text
+            
+            string text = display.Text;
+            if (display.Text.Length > 0)
+            {
+                text = text.Remove(text.Length - 1);
+            }
+            display.Text = text;
         }
-
-        public static string RemoveLast(this string text, string character)
+        // 3,45+3,85 = 6,0 / 1,3 = 7,3
+        private void buttonDot_Click(object sender, EventArgs e)
         {
-            if (text.Length < 1) return text;
-            return text.Remove(text.ToString().LastIndexOf(character), character.Length);
+            display.Text += ".";
         }
     }
 }
