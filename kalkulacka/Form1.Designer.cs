@@ -232,6 +232,7 @@
             this.buttonC.TabIndex = 16;
             this.buttonC.Text = "C";
             this.buttonC.UseVisualStyleBackColor = true;
+            this.buttonC.Click += new System.EventHandler(this.buttonC_Click);
             // 
             // buttonAC
             // 
@@ -360,6 +361,7 @@
             this.Controls.Add(this.buttonTODO);
             this.Name = "displayHistory";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.displayHistory_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

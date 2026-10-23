@@ -67,11 +67,24 @@ namespace kalkulacka
 
         private void buttonAC_Click(object sender, EventArgs e)
         {
-            result = 0;
-            number1 = 0;
-            number2 = 0;
-            op = "";
+
             display.Clear();
+        }
+
+        private void displayHistory_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonC_Click(object sender, EventArgs e)
+        {
+            display.Text
+        }
+
+        public static string RemoveLast(this string text, string character)
+        {
+            if (text.Length < 1) return text;
+            return text.Remove(text.ToString().LastIndexOf(character), character.Length);
         }
     }
 }
